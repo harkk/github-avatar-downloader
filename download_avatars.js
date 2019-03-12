@@ -22,7 +22,8 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 getRepoContributors("jquery", "jquery", function (err, result) {
   for (var i = 0; i < result.length; i++) {
-    console.log('Result:', result[i].avatar_url);
+    downloadImageByURL(result[i].avatar_url, './avatars/' +result[i].login + '.jpg');
+    // console.log('Result:', result[i].avatar_url);
   } //loop for array
   console.log("Errors:", err);
   // console.log("Result:", result);
@@ -31,5 +32,3 @@ getRepoContributors("jquery", "jquery", function (err, result) {
 function downloadImageByURL(url, filePath) {
   request(url).pipe(fs.createWriteStream(filePath));
 }
-
-downloadImageByURL('https://avatars0.githubusercontent.com/u/1615?v=4', './test.jpg');
