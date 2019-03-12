@@ -27,7 +27,10 @@ getRepoContributors(args[0], args[1], function (err, result) {
     // console.log('Result:', result[i].avatar_url); passed downloadImageByURL
     // into here instead
   } //loop for array
-  console.log("Errors:", err);
+  if (!args[0] || !args[1]) {
+    console.log("Errors: invalid or missing arguments");
+  }
+
   // console.log("Result:", result);
 });
 
